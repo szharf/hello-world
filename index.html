@@ -3,12 +3,50 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>my-first-website</title>
+  <title>藥師</title>
   <LINK href="styles.css" rel="stylesheet" type="text/css">
+  <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body>
-
+  
+    <div id="time">
+				<p>{{date | formatDate}}</p>
+			</div>
+			<script>
+				 var padDate = function(value){
+				      return value < 10 ? '0'+ value:value;
+				    };
+				
+				
+				    var time = new Vue({
+				      el:'#time',
+				      data:{
+				        date:new Date()
+				      },
+				      filters:{
+				        formatDate: function (value){
+				          var date = new Date(value);
+				          var hours = padDate(date.getHours());
+				          var minutes = padDate(date.getMinutes());
+				          var seconds = padDate(date.getSeconds());
+				          //整理好的数据返回出去
+				          return hours+':'+minutes+':'+seconds;
+				        }
+				      },
+				      mounted:function(){
+				        var _this = this;//声明一个变量指向Vue实例this，保证作用域一致
+				        this.timer = setInterval(function(){
+				          _this.date = new Date();
+				        },1000);
+				      },
+				      beforeDestory:function(){
+				        if(this.timer){
+				          clearInterval(this.timer);//在vue示例销毁前，清除我们的定时器
+				        }
+				      }
+				    })
+			</script>
 <img src="https://octodex.github.com/images/daftpunktocat-thomas.gif" id="octocat" alt="octocat-gif" />
 
 <!-- Change this code here by copy and pasting your template on line 15 -->
