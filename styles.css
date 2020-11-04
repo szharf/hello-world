@@ -23,7 +23,7 @@ p {
 				width: 100px;
 				text-align: center;
 				transition: all 0.25s;}
-		#time p{color: white;
+		#time p{
 			font-size: 36px;
 			font-weight: lighter;
 			line-height: 20px;
