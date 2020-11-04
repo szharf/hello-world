@@ -18,9 +18,9 @@ p {
 #time{				position: fixed;
 				top: 115px;
 				left: 50%;
-				/* margin-left: -47.5px; */
+				margin-left: -100px;
 				
-				width: 100px;
+				width: 200px;
 				text-align: center;
 				transition: all 0.25s;}
 		#time p{
